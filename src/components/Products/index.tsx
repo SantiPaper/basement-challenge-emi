@@ -5,7 +5,11 @@ import { type Ropa } from "../../api/types";
 import { Container } from "../Container";
 import frame from "../../../public/images/frame.png";
 
-export const Products = () => {
+type Props = {
+  addCart: (value: Ropa) => void;
+};
+
+export const Products = ({ addCart }: Props) => {
   const [clothes, setClothes] = useState<Array<Ropa>>([]);
   useEffect(() => {
     getRopa().then((data) => setClothes(data));
@@ -21,7 +25,7 @@ export const Products = () => {
               src={product.image}
               alt={product.name}
             />
-            <button className="hover">
+            <button onClick={() => addCart(product)} className="hover">
               <span className="sr-only">Agregar al carrito</span>
               <img src={frame} alt="" />
             </button>

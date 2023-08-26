@@ -2,8 +2,9 @@
   {
     "id": "black-tshirt",
     "image": "/products/shirt.png",
-    "price": 7.95,
+    "price": 13.95,
     "name": "Black t-shirt",
+    "description": "Unisex Basic Softstyle T-Shirt",
     "options": [
       {
         "label": "size",
@@ -14,8 +15,9 @@
   {
     "id": "black-hoodie",
     "image": "/products/hoodie.png",
-    "price": 13,
+    "price": 25,
     "name": "Black hoodie",
+    "description": "Unisex Basic Softstyle Hoodie",
     "options": [
       {
         "label": "size",
@@ -26,8 +28,9 @@
   {
     "id": "black-cap",
     "image": "/products/cap.png",
-    "price": 23,
+    "price": 9.75,
     "name": "Black cap",
+    "description": "Unisex Basic Essential Cap",
     "options": [
       {
         "label": "size",
