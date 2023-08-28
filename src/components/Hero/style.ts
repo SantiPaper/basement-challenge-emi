@@ -38,6 +38,7 @@ export const StyledHero = styled.section`
     &__figure1,
     &__figure2 {
       position: absolute;
+      z-index: 1;
     }
 
     &__figure1 {
@@ -47,7 +48,6 @@ export const StyledHero = styled.section`
     &__figure2 {
       right: 4%;
       top: 64%;
-      z-index: 1;
     }
     &__marquee {
       margin-top: 3rem;

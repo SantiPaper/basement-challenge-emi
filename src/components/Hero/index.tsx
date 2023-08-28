@@ -17,9 +17,7 @@ export const Hero = () => {
         <img className="hero__figure2" src={figure2} alt="" />
         <p className="hero__est">Est</p>
         <p className="hero__2k19">2k19</p>
-        <marquee className="hero__marquee" behavior="scroll" direction="left">
-          <Marquee />
-        </marquee>
+        <Marquee />
       </StyledHero>
     </Container>
   );

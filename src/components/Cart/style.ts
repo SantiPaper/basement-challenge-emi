@@ -47,6 +47,12 @@ export const StyledCart = styled.div`
       text-transform: uppercase;
     }
 
+    &__h3 {
+      font-size: 8.5rem;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
     &__span {
       color: black;
       -webkit-text-stroke: 0.5px white;
