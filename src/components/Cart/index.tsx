@@ -9,6 +9,11 @@ type Props = {
 };
 
 export const Cart = ({ cart, closeModal }: Props) => {
+  const totalPrice = cart.reduce((acc, value) => acc + value.price * 1, 0);
+  const checkout = {
+    price: cart.reduce((acc, value) => acc + value.price * 1, 0),
+    products: cart.map((element) => element.name),
+  };
   return (
     <StyledCart>
       <Container>
@@ -51,10 +56,13 @@ export const Cart = ({ cart, closeModal }: Props) => {
             </div>
           </div>
           <div className="cart__footer">
-            <p className="cart__footer_total-price">
-              Total: {cart.reduce((acc, value) => acc + value.price * 1, 0)}$
-            </p>
-            <button className="cart__footer__checkout">Checkout</button>
+            <p className="cart__footer_total-price">Total: {totalPrice}$</p>
+            <button
+              onClick={() => console.log(checkout)}
+              className="cart__footer__checkout"
+            >
+              Checkout
+            </button>
           </div>
         </div>
       </Container>
