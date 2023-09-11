@@ -57,4 +57,38 @@ export const StyledHero = styled.section`
       padding: 0.8rem;
     }
   }
+  @media (max-width: 1200px) {
+    .hero {
+      &__figure1,
+      &__figure2,
+      &__2k19,
+      &__est {
+        display: none;
+      }
+      &__title {
+        font-size: 15rem;
+        line-height: 12rem;
+        margin-top: 4rem;
+        margin-bottom: 4rem;
+      }
+    }
+  }
+  @media (max-width: 800px) {
+    .hero {
+      &__title {
+        font-size: 9rem;
+        line-height: 7rem;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+      }
+    }
+  }
+  @media (max-width: 500px) {
+    .hero {
+      &__title {
+        font-size: 6rem;
+        line-height: 5rem;
+      }
+    }
+  }
 `;

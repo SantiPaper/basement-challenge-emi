@@ -25,7 +25,6 @@ function App() {
   return (
     <StyledApp>
       {modal && <Cart cart={cart} closeModal={closeModal} />}
-
       <Header closeModal={closeModal} cart={cart.length} />
       <main>
         <Hero />

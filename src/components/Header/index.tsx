@@ -14,7 +14,7 @@ export const Header = ({ closeModal, cart }: Props) => {
     <Container>
       <StyledHeader>
         <img src={logo} alt="" />
-        <img src={group} alt="" />
+        <img className="group" src={group} alt="" />
         <button onClick={closeModal} className="button">
           Cart ({cart})
         </button>

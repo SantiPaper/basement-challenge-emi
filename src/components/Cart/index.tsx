@@ -1,4 +1,4 @@
-import { Ropa } from "../../api/types";
+import type { Ropa, Size } from "../../api/types";
 import { Container } from "../Container";
 import { StyledCart } from "./style";
 import { Arrow } from "../../../public/svg/Arrow";
@@ -10,6 +10,7 @@ type Props = {
 };
 
 export const Cart = ({ cart, closeModal }: Props) => {
+  const [size, setSize] = useState<Size>("S");
   const totalPrice = cart.reduce((acc, value) => acc + value.price * 1, 0);
   const checkout = {
     price: cart.reduce((acc, value) => acc + value.price * 1, 0),
@@ -18,6 +19,11 @@ export const Cart = ({ cart, closeModal }: Props) => {
   const [number, setNumber] = useState(1);
   const sumaNumber = () => {
     setNumber(number + 1);
+  };
+
+  const onChange = (size: Size) => {
+    setSize(size);
+    console.log(size);
   };
   return (
     <StyledCart>
@@ -32,16 +38,18 @@ export const Cart = ({ cart, closeModal }: Props) => {
             </h2>
             {cart.length > 0 ? (
               <div className="cart__scroll">
-                {cart.map((r) => (
-                  <article key={r.id} className="cart__ropa">
+                {cart.map((product) => (
+                  <article key={product.id} className="cart__ropa">
                     <img
                       className="cart__ropa__img"
-                      src={r.image}
-                      alt={r.name}
+                      src={product.image}
+                      alt={product.name}
                     />
                     <div className="cart__info">
-                      <h3 className="cart__ropa__name">{r.name}</h3>
-                      <p className="cart__ropa__description">{r.description}</p>
+                      <h3 className="cart__ropa__name">{product.name}</h3>
+                      <p className="cart__ropa__description">
+                        {product.description}
+                      </p>
                       <div className="cart__ropa__cantidad">
                         <p className="cart__ropa__cantidad__p">Quantity:</p>
                         <p className="cart__ropa__cantidad__text">
@@ -52,13 +60,30 @@ export const Cart = ({ cart, closeModal }: Props) => {
                       </div>
                       <div className="cart__ropa__size">
                         <p className="cart__ropa__cantidad__p">
-                          {r.options.map((e) => e.label)}:
+                          {product.options.map((e) => e.label)}:
                         </p>
-                        <button>{r.options[0].values[0]}</button>
-                        <button>{r.options[0].values[1]}</button>
-                        <button>{r.options[0].values[2]}</button>
-                        <button>{r.options[0].values[3]}</button>
-                        <p className="cart__ropa__size__price">${r.price}</p>
+                        {product.options[0].values.map((s) => (
+                          <div className="container-input">
+                            <input
+                              className="input"
+                              onChange={() => onChange(s)}
+                              type="radio"
+                              id={s}
+                              value={s}
+                              name="size"
+                              checked={s === size}
+                            />
+                            <label
+                              className={size === s ? "label-check" : "label"}
+                              htmlFor={s}
+                            >
+                              {s}
+                            </label>
+                          </div>
+                        ))}
+                        <p className="cart__ropa__size__price">
+                          ${product.price}
+                        </p>
                       </div>
                     </div>
                   </article>

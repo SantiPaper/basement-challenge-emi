@@ -27,7 +27,7 @@ export const StyledProducts = styled.section`
 
       border-bottom: 3px solid white;
     }
-    width: 38rem;
+    max-width: 33%;
   }
   .hover {
     background-color: transparent;
@@ -52,5 +52,23 @@ export const StyledProducts = styled.section`
     display: flex;
     justify-content: space-between;
     font-size: 1.7rem;
+  }
+  @media (max-width: 800px) {
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(27, 27, 27, 0.4);
+    .article {
+      margin-top: 1rem;
+      &__img {
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 1) 23%,
+          rgba(27, 27, 27, 1) 100%
+        );
+
+        border-bottom: 2px solid white;
+      }
+      max-width: 95%;
+    }
   }
 `;

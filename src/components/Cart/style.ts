@@ -160,4 +160,28 @@ export const StyledCart = styled.div`
       }
     }
   }
+  .container-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  .input {
+    display: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+  }
+  .label,
+  .label-check {
+    padding: 0.3rem 1rem;
+    border: 1px solid transparent;
+    border-radius: 99rem;
+    font-size: 1.5rem;
+  }
+
+  .label-check {
+    border: 1px solid white;
+  }
 `;

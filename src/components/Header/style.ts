@@ -17,4 +17,11 @@ export const StyledHeader = styled.header`
     text-transform: uppercase;
     cursor: pointer;
   }
+
+  @media (max-width: 1200px) {
+    padding: 0 2rem;
+    .group {
+      display: none;
+    }
+  }
 `;
