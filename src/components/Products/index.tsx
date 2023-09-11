@@ -19,7 +19,7 @@ export const Products = ({ addCart }: Props) => {
     <Container>
       <StyledProducts>
         {clothes.map((product) => (
-          <article className="article">
+          <article key={product.id} className="article">
             <img
               className="article__img"
               src={product.image}

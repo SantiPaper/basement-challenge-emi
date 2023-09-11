@@ -10,12 +10,24 @@ export const StyledCart = styled.div`
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 2;
 
+  .background-img {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 1) 23%,
+      rgba(27, 27, 27, 1) 100%
+    );
+    margin-right: 1rem;
+  }
+
   .cart {
     top: 0;
     right: 0;
     position: absolute;
     background-color: black;
-    border: 1px solid white;
+    border-bottom: 1px solid white;
+    border-right: 1px solid white;
+    border-left: 1px solid white;
+
     display: flex;
     flex-direction: column;
 
@@ -85,6 +97,7 @@ export const StyledCart = styled.div`
 
       &__description {
         font-size: 1.5rem;
+        color: #999999;
       }
 
       &__cantidad {
@@ -136,6 +149,10 @@ export const StyledCart = styled.div`
         }
       }
     }
+    .cart__footer_total-price {
+      display: flex;
+      align-items: center;
+    }
     &__footer {
       border-top: 1px solid white;
       display: flex;
@@ -183,5 +200,165 @@ export const StyledCart = styled.div`
 
   .label-check {
     border: 1px solid white;
+  }
+  .column {
+    display: flex;
+    align-items: center;
+  }
+  @media (max-width: 800px) {
+    .cart {
+      top: 0;
+      left: 0;
+      right: 0;
+      border-right: none;
+      border-left: none;
+
+      &__h2 {
+        font-size: 14rem;
+        text-transform: uppercase;
+        text-align: center;
+        line-height: 0.9;
+      }
+
+      &__span {
+        color: black;
+        -webkit-text-stroke: 0.5px white;
+      }
+
+      &__scroll {
+        overflow-y: scroll;
+        max-height: 40rem;
+        padding-right: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+      }
+
+      &__ropa {
+        display: flex;
+        border: 1px solid white;
+        padding: 2rem 1rem;
+        display: flex;
+        margin-bottom: 1rem;
+
+        &__img {
+          width: 15rem;
+        }
+
+        &__name {
+          font-size: 3rem;
+          text-transform: uppercase;
+        }
+
+        &__description {
+          font-size: 1rem;
+        }
+
+        &__cantidad {
+          margin-top: auto;
+          display: flex;
+          align-items: center;
+          &__p {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+          }
+          & > button {
+            color: white;
+            background-color: transparent;
+            border: none;
+            padding: 0.2rem 1.3rem;
+            cursor: pointer;
+          }
+          &__text {
+            border: 1px solid white;
+            margin-left: 2rem;
+            font-size: 1.8rem;
+            border-radius: 99rem;
+          }
+        }
+
+        &__size {
+          margin-top: 1rem;
+          display: flex;
+
+          & > button {
+            background-color: transparent;
+            color: white;
+            padding: 0.6rem;
+            border-radius: 99rem;
+            border: 1px solid transparent;
+            font-family: inherit;
+            font-size: 0rem;
+            cursor: pointer;
+          }
+
+          button:focus {
+            border: 1px solid white;
+          }
+
+          &__price {
+            margin-left: auto;
+            font-size: 3.2rem;
+          }
+        }
+      }
+    }
+  }
+  @media (max-width: 550px) {
+    .column {
+      justify-content: center;
+    }
+
+    .cart {
+      &__ropa {
+        &__size {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          &__price {
+            margin-left: 0;
+            font-size: 3.2rem;
+          }
+        }
+      }
+    }
+  }
+  @media (max-width: 550px) {
+    .cart__h2 {
+      font-size: 9.5rem;
+      text-transform: uppercase;
+    }
+    .cart__footer {
+      p {
+        font-size: 2rem;
+      }
+    }
+    .cart__ropa__img {
+      width: 12rem;
+    }
+    .cart__ropa__name {
+      font-size: 2rem;
+    }
+    .cart__ropa__description {
+      font-size: 1.2rem;
+    }
+    .label,
+    .label-check {
+      padding: 0 0.5rem;
+      border: 1px solid transparent;
+      border-radius: 99rem;
+      font-size: 1.3rem;
+    }
+    .label-check {
+      border: 1px solid white;
+    }
+  }
+  @media (max-width: 370px) {
+    .cart {
+      justify-content: center;
+    }
+    .cart__ropa__img {
+      display: none;
+    }
   }
 `;

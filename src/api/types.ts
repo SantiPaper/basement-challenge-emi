@@ -5,6 +5,7 @@ export type Ropa = {
   name: string;
   description: string;
   options: Option[];
+  key: string;
 };
 
 export type Option = {
