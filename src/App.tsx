@@ -1,26 +1,13 @@
-import { useState } from "react";
 import { Cart } from "./components/Cart";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { Products } from "./components/Products";
 import { StyledApp } from "./style";
-import { Ropa } from "./api/types";
+import { useAppContext } from "./hooks/useAppContext";
 
 function App() {
-  const [cart, setCart] = useState<Ropa[]>([]);
-  const [modal, setModal] = useState(false);
-
-  const addCart = (producto: Ropa) => {
-    if (cart.find((r) => producto.id === r.id)) {
-      setCart([...cart]);
-    } else setCart([...cart, producto]);
-  };
-  console.log(cart);
-
-  const closeModal = () => {
-    setModal(!modal);
-  };
+  const { cart, closeModal, modal, addCart } = useAppContext();
 
   return (
     <StyledApp>

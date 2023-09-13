@@ -21,7 +21,7 @@
     "options": [
       {
         "label": "size",
-        "values": ["S", "M", "L", "XL"]
+        "values": ["S ", "M ", "L ", "XL "]
       }
     ]
   },
@@ -34,7 +34,7 @@
     "options": [
       {
         "label": "size",
-        "values": ["S", "M", "L", "XL"]
+        "values": ["S  ", "M  ", "L  ", "XL  "]
       }
     ]
   }

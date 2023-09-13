@@ -5,12 +5,9 @@ export type Ropa = {
   name: string;
   description: string;
   options: Option[];
-  key: string;
 };
 
 export type Option = {
   label: string;
-  values: Size[];
+  values: string[];
 };
-
-export type Size = "S" | "M" | "L" | "XL";

@@ -23,5 +23,6 @@ export const StyledHeader = styled.header`
     .group {
       display: none;
     }
+    margin-bottom: 2rem;
   }
 `;

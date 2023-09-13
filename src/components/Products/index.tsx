@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { getRopa } from "../../api";
 import { type Ropa } from "../../api/types";
 import { Container } from "../Container";
-import frame from "../../../public/images/frame.png";
+import { Product } from "../Product";
 
 type Props = {
   addCart: (value: Ropa) => void;
@@ -19,21 +19,7 @@ export const Products = ({ addCart }: Props) => {
     <Container>
       <StyledProducts>
         {clothes.map((product) => (
-          <article key={product.id} className="article">
-            <img
-              className="article__img"
-              src={product.image}
-              alt={product.name}
-            />
-            <button onClick={() => addCart(product)} className="hover">
-              <span className="sr-only">Agregar al carrito</span>
-              <img src={frame} alt="" />
-            </button>
-            <div>
-              <h3>{product.name}</h3>
-              <p>${product.price}</p>
-            </div>
-          </article>
+          <Product addCart={addCart} product={product} />
         ))}
       </StyledProducts>
     </Container>
