@@ -19,7 +19,7 @@ export const Products = ({ addCart }: Props) => {
     <Container>
       <StyledProducts>
         {clothes.map((product) => (
-          <Product addCart={addCart} product={product} />
+          <Product key={product.id} addCart={addCart} product={product} />
         ))}
       </StyledProducts>
     </Container>
