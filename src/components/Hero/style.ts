@@ -15,7 +15,7 @@ export const StyledHero = styled.section`
     }
     &__span {
       color: black;
-      -webkit-text-stroke: 0.5px white;
+      -webkit-text-stroke: 1px white;
     }
 
     &__est,

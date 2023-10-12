@@ -12,7 +12,8 @@ export const CartProduct = ({ product }: Props) => {
     setSize(size);
     console.log(size);
   };
-  const { number, sumNumber, minNumber } = useCart();
+  const { deleteProduct, sumNumber, minNumber } = useCart();
+
   return (
     <article className="cart__ropa">
       <div className="background-img">
@@ -23,23 +24,26 @@ export const CartProduct = ({ product }: Props) => {
         />
       </div>
       <div className="cart__info">
-        <h3 className="cart__ropa__name">{product.name}</h3>
+        <div>
+          <h3 className="cart__ropa__name">{product.name}</h3>
+          <button onClick={() => deleteProduct(product.id)}>x</button>
+        </div>
         <p className="cart__ropa__description">{product.description}</p>
         <div className="cart__ropa__cantidad">
           <p className="cart__ropa__cantidad__p">Quantity:</p>
           <p className="cart__ropa__cantidad__text">
-            <button onClick={minNumber}>-</button>
-            {number}
-            <button onClick={sumNumber}>+</button>
+            <button onClick={() => minNumber(product.id)}>-</button>
+            {product.options[0].quantity}
+            <button onClick={() => sumNumber(product.id)}>+</button>
           </p>
         </div>
         <div className="cart__ropa__size">
           <div className="column">
             <p className="cart__ropa__cantidad__p">
-              {product.options.map((e) => e.label)}:
+              {product.options[0].label}:
             </p>
             {product.options[0].values.map((s) => (
-              <div className="container-input">
+              <div key={s} className="container-input">
                 <input
                   className="input"
                   onChange={() => onChange(s)}
@@ -58,7 +62,9 @@ export const CartProduct = ({ product }: Props) => {
               </div>
             ))}
           </div>
-          <p className="cart__ropa__size__price">${product.price}</p>
+          <p className="cart__ropa__size__price">
+            ${product.price * product.options[0].quantity}
+          </p>
         </div>
       </div>
     </article>

@@ -1,4 +1,3 @@
-import type { Ropa } from "../../api/types";
 import { Container } from "../Container";
 import { StyledCart } from "./style";
 import { Arrow } from "../../../public/svg/Arrow";
@@ -7,12 +6,16 @@ import { useCart } from "../../hooks/useCart";
 import { CartProduct } from "../CartProduct";
 
 type Props = {
-  cart: Ropa[];
   closeModal: () => void;
 };
 
-export const Cart = ({ cart, closeModal }: Props) => {
-  const { totalPrice, checkout } = useCart();
+export const Cart = ({ closeModal }: Props) => {
+  const { checkout, cart } = useCart();
+
+  const totalPrice = cart.reduce(
+    (acc, curr) => acc + curr.price * curr.options[0].quantity,
+    0
+  );
 
   const escapeListener = (e: Event) => {
     if ((e as unknown as KeyboardEvent).key === "Escape") {
@@ -36,8 +39,6 @@ export const Cart = ({ cart, closeModal }: Props) => {
     };
   }, []);
 
-  console.log(totalPrice);
-
   return (
     <StyledCart id="close-modal">
       <Container>
@@ -52,7 +53,7 @@ export const Cart = ({ cart, closeModal }: Props) => {
             {cart.length > 0 ? (
               <div className="cart__scroll">
                 {cart.map((product) => (
-                  <CartProduct product={product} />
+                  <CartProduct key={product.id} product={product} />
                 ))}
               </div>
             ) : (

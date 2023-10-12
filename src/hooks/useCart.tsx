@@ -1,32 +1,45 @@
-import { useState } from "react";
 import { useAppContext } from "./useAppContext";
 
 export const useCart = () => {
-  const { cart } = useAppContext();
-
-  const totalPrice = cart.reduce((acc, value) => acc + value.price * 1, 0);
+  const { cart, setCart } = useAppContext();
 
   const checkout = {
-    price: cart.reduce((acc, value) => acc + value.price * 1, 0),
+    price: cart.reduce(
+      (acc, value) => acc + value.price * value.options[0].quantity,
+      0
+    ),
     products: cart.map((element) => element.name),
   };
-  const [number, setNumber] = useState(1);
 
-  const sumNumber = () => {
-    setNumber(number + 1);
+  const sumNumber = (id: string) => {
+    const newCart = cart.map((product) => {
+      if (product.id === id) {
+        product.options[0].quantity += 1;
+      }
+      return product;
+    });
+    setCart(newCart);
   };
-  const minNumber = () => {
-    if (number > 0) {
-      setNumber(number - 1);
-    } else return number;
+
+  const minNumber = (id: string) => {
+    const newCart = cart.map((product) => {
+      if (product.id === id && product.options[0].quantity > 1) {
+        product.options[0].quantity -= 1;
+      }
+      return product;
+    });
+    setCart(newCart);
+  };
+
+  const deleteProduct = (id: string) => {
+    setCart(cart.filter((product) => product.id !== id));
   };
 
   return {
-    totalPrice,
     checkout,
-    number,
-    setNumber,
     minNumber,
     sumNumber,
+    cart,
+    deleteProduct,
   };
 };
