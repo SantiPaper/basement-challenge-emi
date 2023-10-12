@@ -10,4 +10,5 @@ export type Ropa = {
 export type Option = {
   label: string;
   values: string[];
+  quantity: number;
 };
