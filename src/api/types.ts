@@ -11,4 +11,5 @@ export type Option = {
   label: string;
   values: string[];
   quantity: number;
+  size: string;
 };
