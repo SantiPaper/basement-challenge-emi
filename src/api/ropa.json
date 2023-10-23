@@ -9,6 +9,7 @@
       {
         "label": "size",
         "values": ["S", "M", "L", "XL"],
+        "size": "S",
         "quantity": 1
       }
     ]
@@ -23,6 +24,7 @@
       {
         "label": "size",
         "values": ["S", "M", "L", "XL"],
+        "size": "S",
         "quantity": 1
       }
     ]
@@ -37,6 +39,7 @@
       {
         "label": "size",
         "values": ["S", "M", "L", "XL"],
+        "size": "S",
         "quantity": 1
       }
     ]
