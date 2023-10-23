@@ -40,6 +40,7 @@ export const useCart = () => {
     minNumber,
     sumNumber,
     cart,
+    setCart,
     deleteProduct,
   };
 };
