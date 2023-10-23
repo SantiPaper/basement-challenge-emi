@@ -1,21 +1,26 @@
-import { useState } from "react";
 import { Ropa } from "../../api/types";
 import { useCart } from "../../hooks/useCart";
+import { StyledCartProduct } from "./style";
 
 type Props = {
   product: Ropa;
 };
 
 export const CartProduct = ({ product }: Props) => {
-  const [size, setSize] = useState<string>("S");
-  const onChange = (size: string) => {
-    setSize(size);
-    console.log(size);
+  const { cart, setCart, deleteProduct, sumNumber, minNumber } = useCart();
+
+  const onChange = (size: string, id: string) => {
+    const newCart = cart.map((product) => {
+      if (product.id === id) {
+        product.options[0].size = size;
+      }
+      return product;
+    });
+    setCart(newCart);
   };
-  const { deleteProduct, sumNumber, minNumber } = useCart();
 
   return (
-    <article className="cart__ropa">
+    <StyledCartProduct>
       <div className="background-img">
         <img
           className="cart__ropa__img"
@@ -24,9 +29,14 @@ export const CartProduct = ({ product }: Props) => {
         />
       </div>
       <div className="cart__info">
-        <div>
+        <div className="cart__ropa__div">
           <h3 className="cart__ropa__name">{product.name}</h3>
-          <button onClick={() => deleteProduct(product.id)}>x</button>
+          <button
+            className="cart__ropa__delete"
+            onClick={() => deleteProduct(product.id)}
+          >
+            X
+          </button>
         </div>
         <p className="cart__ropa__description">{product.description}</p>
         <div className="cart__ropa__cantidad">
@@ -46,15 +56,17 @@ export const CartProduct = ({ product }: Props) => {
               <div key={s} className="container-input">
                 <input
                   className="input"
-                  onChange={() => onChange(s)}
+                  onChange={(ev) => onChange(ev.target.value, product.id)}
                   type="radio"
                   id={s}
                   value={s}
-                  name="size"
-                  checked={s === size}
+                  name={product.id}
+                  checked={product.options[0].size === s}
                 />
                 <label
-                  className={size === s ? "label-check" : "label"}
+                  className={
+                    product.options[0].size === s ? "label-check" : "label"
+                  }
                   htmlFor={s}
                 >
                   {s}
@@ -67,6 +79,6 @@ export const CartProduct = ({ product }: Props) => {
           </p>
         </div>
       </div>
-    </article>
+    </StyledCartProduct>
   );
 };
